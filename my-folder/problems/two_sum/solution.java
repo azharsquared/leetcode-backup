@@ -1,13 +1,15 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        Map<Integer,Integer> map =new HashMap<>();
-        for(int i=0;i<nums.length;i++){
-            int value = target - nums[i];
-            if(map.containsKey(value)){
-                return new int[] { map.get(value),i};
+        Map<Integer,Integer> map = new HashMap<>();
+        for(int i =0;i < nums.length;i++){
+            int diff = target - nums[i];
+            Integer val = map.get(diff);
+            if( val != null){
+                return new int[]{val,i};
+            }else{
+                map.put(nums[i],i);
             }
-            map.put(nums[i],i);
         }
-        throw new IllegalArgumentException("NO solution");
+        return new int[2];
     }
 }
